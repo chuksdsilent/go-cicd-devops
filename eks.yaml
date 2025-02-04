@@ -1,0 +1,15 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: my-secure-cluster
+  region: us-east-1
+
+nodeGroups:
+  - name: private-workers
+    instanceType: t3.medium
+    desiredCapacity: 1
+    privateNetworking: false
+    volumeSize: 8
+    minSize: 1
+    maxSize: 2

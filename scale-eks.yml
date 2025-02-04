@@ -1,0 +1,15 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: my-secure-cluster  # Specify your EKS cluster name
+  region: us-east-1     # Specify the AWS region
+
+
+managedNodeGroups:
+  - name:  private-workers  # Specify the name of the node group you want to scale
+    desiredCapacity: 2  # Specify the desired number of nodes
+    minSize: 1   # Optional: Minimum number of nodes
+    maxSize: 2   # Optional: Maximum number of nodes
+    instanceType: t3.medium
+    volumeSize: 8 
