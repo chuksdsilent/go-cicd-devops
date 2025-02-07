@@ -76,21 +76,19 @@ jobs:
     needs: push
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-      with:
-        token: ${{ secrets.TOKEN }}
-
-    - name: Update tag in Helm chart
+    - name: Configure Git user
+      run: |
+        git config --global user.name "oshaba samson"
+        git config --global user.email "chuksdsilent@gmail.com"
+    
+    - name: Update values.yaml with new tag
       run: |
         sed -i 's/tag: .*/tag: "${{github.run_id}}"/' helm/go-web-app-chart/values.yaml
+        git add some-file.txt
+        git commit -m "Automated commit"
 
-    - name: Commit and push changes
+    - name: Push changes
       run: |
-        git config --global user.email "chuksdsilent@gmail.com"
-        git config --global user.name "Oshaba Samson"
-        git add helm/go-web-app-chart/values.yaml
-        git commit -m "Update tag in Helm chart"
-        git push
+        git push https://x-access-token:${{ secrets.TOKEN }}@github.com/${{ github.repository }}.git HEAD:${{ github.ref }}
 
-
+    
