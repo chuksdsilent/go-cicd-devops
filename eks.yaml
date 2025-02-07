@@ -4,13 +4,12 @@ kind: ClusterConfig
 metadata:
   name: my-cluster
   region: us-east-1  # Replace with your preferred region
- 
+
 nodeGroups:
   - name: spot-node-group
-    instanceType:  t3.medium    # Replace with your preferred instance type
+    instanceType: t3.medium    # Replace with your preferred instance type
     desiredCapacity: 2
     minSize: 1
     maxSize: 3
-    volumeSize: 20
-    spot: true     
+    volumeSize: 20           # Correctly specify spot instances
     privateNetworking: false
