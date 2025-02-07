@@ -83,7 +83,7 @@ jobs:
     
     - name: Update values.yaml with new tag
       run: |
-        sed -i 's/tag: .*/tag: "${{github.run_id}}"/' helm/values.yaml
+        sed -i 's/tag: .*/tag: "${{github.run_id}}"/g' /helm/values.yaml
         git add some-file.txt
         git commit -m "Automated commit"
 
