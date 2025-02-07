@@ -80,11 +80,15 @@ jobs:
       run: |
         git config --global user.name "oshaba samson"
         git config --global user.email "chuksdsilent@gmail.com"
-        
+
     - name: List directory structure
       run: |
         ls -R
+    - name: Check changes to values.yaml
+      run: |
+        cat helm/values.yaml
 
+        
     - name: Update values.yaml with new tag
       run: |
         sed -i 's/tag: .*/tag: "${{github.run_id}}"/g' helm/values.yaml
