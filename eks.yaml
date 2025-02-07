@@ -6,7 +6,7 @@ metadata:
   region: us-east-1  # Replace with your preferred region
 
 nodeGroups:
-  - name: spot-node-group
+  - name: node-group
     instanceType: t3.medium    # Replace with your preferred instance type
     desiredCapacity: 2
     minSize: 1
